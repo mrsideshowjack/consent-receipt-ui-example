@@ -1,9 +1,11 @@
+//cbadly named variables
 var sp = document.getElementById('sp'),
     sn = document.getElementById('sn'),
     ck = document.getElementById('ck'),
   sbbt = document.getElementById('submitBtn'),
   rcbt = document.getElementById('recept-btn');
 
+//button logic
 sbbt.addEventListener("click", function(event){
   event.preventDefault()
   sp.classList.add('hidden')
@@ -32,7 +34,7 @@ var cskey = '4d58ba73-1dec-4724-b040-df0b0caf38c5'; // Consentua service key
 var ctid = '20'; // Template ID
 var cuid = false;
 var ccb_ready = function (msg) {
-  //When consentua is ready open/dont open modal
+  //When consentua is ready hide load bar
   console.log('UID is:' + msg.message.uid);
   document.getElementById('loading').classList.add('hidden');
   sp.classList.remove('hidden')
