@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" href="style.css">
-	<script src="https://websdk.consentua.com/websdk/consentua-embed.js.php"></script>
+	<!--<script src="https://websdk-dev.consentua.com/websdk/consentua-embed.js.php"></script>-->
+	<script src="http://127.0.0.2:8080/websdk/consentua-embed.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
+
+<span id="logotype">ACME</span>
+
 <form>
-	<h1>Subscribe to ACME newsletter</h1>
-	<input type="text" placeholder="name" />
-	<input type="email" placeholder="email address" />
-	<div id="loading">Loading Consentua</div>
+	<h1>Subscribe to the ACME newsletter</h1>
+	<input type="text" id="name" placeholder="name" />
+	<input type="email" id="email" placeholder="email address" />
+	<!--<div id="loading">Loading Consentua</div>-->
 	<iframe scrolling="no" id="consentua-cookie-widget"></iframe>
 
 	<div id="btn-group">
@@ -18,8 +23,8 @@
 			<i id="sn" class="fas fa-sync-alt fa-spin"></i>
 			<i id="ck" class="fas fa-check hidden"></i>
 		</button>
-		<button id="recept-btn">
-			<i class="fas fa-receipt"></i> Save your consent receipt</button>
+		<button id="receipt-btn">
+			<span><i class="fas fa-receipt"></i> Save your consent receipt</button></span>
 	</div>
 
 </form>
