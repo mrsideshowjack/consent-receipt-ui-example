@@ -26,9 +26,9 @@ sbbt.addEventListener("click", function(event){
 //Consentua setup
 var ccid = '1'; // Customer ID
 var csid = '25'; // Consentua service ID
-var cskey = '4d58ba73-1dec-4724-b040-df0b0caf38c5'; // Consentua service key
 var ctid = '20'; // Template ID
 var cuid = false;
+
 var ccb_ready = function (msg) {
   //When consentua is ready hide load bar
   console.log('UID is:' + msg.message.uid);
@@ -81,10 +81,18 @@ for(var i in ins){
 }
 
 var ciframe = document.getElementById('consentua-cookie-widget');
-var ccwrap = new ConsentuaUIWrapper(ciframe, ccid, cuid, ctid, csid, null, function () {} , 'en', {skey: cskey, ix: 'https://kni-test-node.herokuapp.com/custom-interaction.html'});
-// set cb
-ccwrap.onset = ccb_set;
-ccwrap.onready = ccb_ready;
+
+var cwrap = new ConsentuaEmbed({
+    iframe: ciframe,
+    clientid: ccid,
+    uid: cuid,
+    templateid: ctid,
+    serviceid: csid,
+    opts: {ix: 'https://kni-test-node.herokuapp.com/custom-interaction.html'}
+});
+
+cwrap.onset = ccb_set;
+cwrap.onready = ccb_ready;
 
 /**
  * Receipt handling
@@ -98,7 +106,7 @@ rcbt.addEventListener("click", function(event){
     window.open(crurl);
 });
 
-ccwrap.onreceipt = function(msg){
+cwrap.onreceipt = function(msg){
     crurl = msg.message.receiptURL;
     console.log("Got consent receipt", msg, crurl);
 }
